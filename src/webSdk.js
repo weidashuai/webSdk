@@ -10,7 +10,7 @@ window.__webEyeSDK__ = {
 // 针对Vue项目的错误捕获
 export function install(Vue, options) {
     if (__webEyeSDK__.vue) return;
-    __webEyeSDK__.vue = true;
+    __webSdk__.vue = true;
     setConfig(options);
     const handler = Vue.config.errorHandler;
     // vue项目中 通过 Vue.config.errorHandler 捕获错误
@@ -33,7 +33,7 @@ export function install(Vue, options) {
 // 针对React项目的错误捕获
 export function errorBoundary(err, info) {
     if (__webEyeSDK__.react) return;
-    __webEyeSDK__.react = true;
+    __webSdk__.react = true;
     // todo: 上报具体的错误信息
     const reportData = {
         error: err?.stack,
