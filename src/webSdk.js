@@ -3,7 +3,7 @@ import error from './error/index';
 import behavior from './behavior/index';
 import { setConfig } from './config';
 import { lazyReportBatch } from './report';
-window.__webEyeSDK__ = {
+window.__webSdk__ = {
     version: '0.0.1',
 };
 
