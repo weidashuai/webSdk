@@ -6,7 +6,6 @@ export default function pageChange() {
     window.addEventListener(
         'hashchange',
         function (event) {
-            console.error('hashchange', event);
             const newUrl = event.newURL;
             const reportData = {
                 form: oldUrl,
@@ -26,7 +25,6 @@ export default function pageChange() {
     window.addEventListener(
         'popstate',
         function (event) {
-            console.error('popstate', event);
             const to = window.location.href;
             const reportData = {
                 form: from,

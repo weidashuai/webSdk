@@ -26,7 +26,7 @@ const plugins = [
 module.exports = [
     {
         plugins,
-        input: resolveFile("../src/webEyeSDK.js"),
+        input: resolveFile("../src/webSdk.js"),
         output: {
             file: resolveFile("../dist/monitor.js"),
             format: "iife",
@@ -36,7 +36,7 @@ module.exports = [
     },
     {
         plugins,
-        input: resolveFile("../src/webEyeSDK.js"),
+        input: resolveFile("../src/webSdk.js"),
         output: {
             file: resolveFile("../dist/monitor.esm.js"),
             format: "esm",
@@ -46,7 +46,7 @@ module.exports = [
     },
     {
         plugins,
-        input: resolveFile("../src/webEyeSDK.js"),
+        input: resolveFile("../src/webSdk.js"),
         output: {
             file: resolveFile("../dist/monitor.cjs.js"),
             format: "cjs",

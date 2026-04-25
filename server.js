@@ -9,7 +9,6 @@ app.use(bodyParse.json());
 app.use(bodyParse.text());
 
 app.post('/reportData', (req, res) => {
-    console.log(req.body);
     res.status(200).send('ok');
 });
 app.listen(9800, () => {

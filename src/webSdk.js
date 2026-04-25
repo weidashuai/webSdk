@@ -24,7 +24,6 @@ export function install(Vue, options) {
             startTime: window.performance.now(),
             pageURL: window.location.href,
         };
-        console.log('vue error', reportData);
         lazyReportBatch(reportData);
         if (handler) {
             handler.call(this, err, vm, info);
@@ -62,7 +61,7 @@ export default {
     init,
 }
 
-// webEyeSDK.init({
+// webSdk.init({
 //     appId: '10000',
 //     batchSize: 50,
 

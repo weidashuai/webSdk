@@ -1,5 +1,5 @@
 import { createApp } from 'vue';
-import monitor from '../../src/webEyeSDK';
+import monitor from '../../src/webSdk';
 import './style.css';
 import App from './App.vue';
 

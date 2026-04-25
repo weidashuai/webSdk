@@ -36,7 +36,6 @@ export function observerEvent() {
                 startTime: performance.now(),
             };
             lazyReportBatch(reportData);
-            // console.log(entry);
         }
     };
 

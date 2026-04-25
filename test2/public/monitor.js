@@ -195,7 +195,6 @@ var monitor = (function (exports) {
     function lazyReportBatch(data) {
       addCache(data);
       var dataCache = getCache();
-      console.error('dataCache', dataCache);
       if (dataCache.length && dataCache.length > config.batchSize) {
         report(dataCache);
         clearCache();
@@ -332,7 +331,6 @@ var monitor = (function (exports) {
               startTime: performance.now()
             };
             lazyReportBatch(reportData);
-            // console.log(entry);
           }
         } catch (err) {
           _iterator.e(err);
@@ -358,7 +356,6 @@ var monitor = (function (exports) {
           for (_iterator.s(); !(_step = _iterator.n()).done;) {
             var entry = _step.value;
             var json = entry.toJSON();
-            console.log(json);
             var reportData = _objectSpread2(_objectSpread2({}, json), {}, {
               type: 'performance',
               subType: entry.name,
@@ -392,7 +389,6 @@ var monitor = (function (exports) {
             if (entry.name === 'first-contentful-paint') {
               observer.disconnect();
               var json = entry.toJSON();
-              console.log(json);
               var reportData = _objectSpread2(_objectSpread2({}, json), {}, {
                 type: 'performance',
                 subType: entry.name,
@@ -444,7 +440,6 @@ var monitor = (function (exports) {
             if (entry.name === 'first-paint') {
               observer.disconnect();
               var json = entry.toJSON();
-              console.log(json);
               var reportData = _objectSpread2(_objectSpread2({}, json), {}, {
                 type: 'performance',
                 subType: entry.name,
@@ -606,7 +601,6 @@ var monitor = (function (exports) {
       // hash histroy
       var oldUrl = '';
       window.addEventListener('hashchange', function (event) {
-        console.error('hashchange', event);
         var newUrl = event.newURL;
         var reportData = {
           form: oldUrl,
@@ -621,7 +615,6 @@ var monitor = (function (exports) {
       }, true);
       var from = '';
       window.addEventListener('popstate', function (event) {
-        console.error('popstate', event);
         var to = window.location.href;
         var reportData = {
           form: from,
@@ -664,7 +657,7 @@ var monitor = (function (exports) {
       var handler = Vue.config.errorHandler;
       // vue项目中 通过 Vue.config.errorHandler 捕获错误
       Vue.config.errorHandler = function (err, vm, info) {
-        // todo: 上报具体的错误信息
+        // 上报错误信息
         var reportData = {
           info: info,
           error: err.stack,
@@ -673,7 +666,6 @@ var monitor = (function (exports) {
           startTime: window.performance.now(),
           pageURL: window.location.href
         };
-        console.log('vue error', reportData);
         lazyReportBatch(reportData);
         if (handler) {
           handler.call(this, err, vm, info);
@@ -684,7 +676,7 @@ var monitor = (function (exports) {
     function errorBoundary(err, info) {
       if (__webEyeSDK__.react) return;
       __webEyeSDK__.react = true;
-      // todo: 上报具体的错误信息
+      // 上报错误信息
       var reportData = {
         error: err === null || err === void 0 ? void 0 : err.stack,
         info: info,
@@ -701,7 +693,7 @@ var monitor = (function (exports) {
       // error();
       // behavior();
     }
-    var webEyeSDK = {
+    var webSdk = {
       install: install,
       errorBoundary: errorBoundary,
       performance: performance$1,
@@ -710,13 +702,12 @@ var monitor = (function (exports) {
       init: init
     };
 
-    // webEyeSDK.init({
+    // webSdk.init({
     //     appId: '10000',
     //     batchSize: 50,
-
     // })
 
-    exports.default = webEyeSDK;
+    exports.default = webSdk;
     exports.errorBoundary = errorBoundary;
     exports.init = init;
     exports.install = install;
