@@ -645,14 +645,14 @@ var monitor = (function (exports) {
       click(), pageChange(), pv();
     }
 
-    window.__webEyeSDK__ = {
+    window.__webSdk__ = {
       version: '0.0.1'
     };
 
     // 针对Vue项目的错误捕获
     function install(Vue, options) {
-      if (__webEyeSDK__.vue) return;
-      __webEyeSDK__.vue = true;
+      if (__webSdk__.vue) return;
+      __webSdk__.vue = true;
       setConfig(options);
       var handler = Vue.config.errorHandler;
       // vue项目中 通过 Vue.config.errorHandler 捕获错误
@@ -674,8 +674,8 @@ var monitor = (function (exports) {
     }
     // 针对React项目的错误捕获
     function errorBoundary(err, info) {
-      if (__webEyeSDK__.react) return;
-      __webEyeSDK__.react = true;
+      if (__webSdk__.react) return;
+      __webSdk__.react = true;
       // 上报错误信息
       var reportData = {
         error: err === null || err === void 0 ? void 0 : err.stack,

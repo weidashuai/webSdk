@@ -9,7 +9,7 @@ window.__webSdk__ = {
 
 // 针对Vue项目的错误捕获
 export function install(Vue, options) {
-    if (__webEyeSDK__.vue) return;
+    if (__webSdk__.vue) return;
     __webSdk__.vue = true;
     setConfig(options);
     const handler = Vue.config.errorHandler;
@@ -32,7 +32,7 @@ export function install(Vue, options) {
 }
 // 针对React项目的错误捕获
 export function errorBoundary(err, info) {
-    if (__webEyeSDK__.react) return;
+    if (__webSdk__.react) return;
     __webSdk__.react = true;
     // todo: 上报具体的错误信息
     const reportData = {
